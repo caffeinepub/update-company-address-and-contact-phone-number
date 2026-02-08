@@ -1,0 +1,84 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+    :root {
+        --radius: 0.5rem;
+        /* Industrial color palette - Light mode */
+        --background: 0.98 0.005 240;
+        --foreground: 0.20 0.015 240;
+        --card: 1 0 0;
+        --card-foreground: 0.20 0.015 240;
+        --popover: 1 0 0;
+        --popover-foreground: 0.20 0.015 240;
+        /* Industrial steel blue */
+        --primary: 0.45 0.12 240;
+        --primary-foreground: 0.98 0.005 240;
+        /* Safety orange accent */
+        --secondary: 0.65 0.18 35;
+        --secondary-foreground: 0.98 0.005 240;
+        --muted: 0.94 0.01 240;
+        --muted-foreground: 0.50 0.01 240;
+        --accent: 0.65 0.18 35;
+        --accent-foreground: 0.98 0.005 240;
+        --destructive: 0.577 0.245 27.325;
+        --destructive-foreground: 0.985 0 0;
+        --border: 0.88 0.01 240;
+        --input: 0.88 0.01 240;
+        --ring: 0.45 0.12 240;
+        --chart-1: 0.45 0.12 240;
+        --chart-2: 0.65 0.18 35;
+        --chart-3: 0.55 0.10 200;
+        --chart-4: 0.60 0.15 280;
+        --chart-5: 0.50 0.12 160;
+    }
+
+    .dark {
+        /* Industrial dark mode - darker steel tones */
+        --background: 0.15 0.015 240;
+        --foreground: 0.95 0.005 240;
+        --card: 0.20 0.015 240;
+        --card-foreground: 0.95 0.005 240;
+        --popover: 0.18 0.015 240;
+        --popover-foreground: 0.95 0.005 240;
+        /* Brighter steel blue for dark mode */
+        --primary: 0.60 0.15 240;
+        --primary-foreground: 0.15 0.015 240;
+        /* Vibrant orange for dark mode */
+        --secondary: 0.70 0.20 35;
+        --secondary-foreground: 0.15 0.015 240;
+        --muted: 0.25 0.015 240;
+        --muted-foreground: 0.65 0.01 240;
+        --accent: 0.70 0.20 35;
+        --accent-foreground: 0.15 0.015 240;
+        --destructive: 0.65 0.22 27;
+        --destructive-foreground: 0.95 0.005 240;
+        --border: 0.30 0.015 240;
+        --input: 0.30 0.015 240;
+        --ring: 0.60 0.15 240;
+        --chart-1: 0.60 0.15 240;
+        --chart-2: 0.70 0.20 35;
+        --chart-3: 0.65 0.12 200;
+        --chart-4: 0.70 0.18 280;
+        --chart-5: 0.60 0.14 160;
+    }
+
+    * {
+        @apply border-border;
+    }
+    body {
+        @apply bg-background text-foreground;
+        font-feature-settings: "rlig" 1, "calt" 1;
+    }
+    
+    h1, h2, h3, h4, h5, h6 {
+        @apply font-bold tracking-tight;
+    }
+}
+
+@layer utilities {
+    .text-balance {
+        text-wrap: balance;
+    }
+}

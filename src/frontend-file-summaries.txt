@@ -1,0 +1,13 @@
+{
+  "frontend/src/App.tsx": "Main application component that wraps the app with ThemeProvider and renders all page sections (Header, Hero, About, Products, Industries, Contact, Footer) in a single-page layout.",
+  "frontend/src/components/Header.tsx": "Fixed navigation header with Infrapulse logo and branding, desktop menu, mobile sheet menu, and smooth scroll functionality to different sections.",
+  "frontend/src/components/Hero.tsx": "Hero section with background image overlay, Infrapulse branding with tagline \"Engineering the Future of Industrial Solutions\", call-to-action buttons, and feature pills highlighting key services.",
+  "frontend/src/components/About.tsx": "About section displaying Infrapulse company history, mission, capabilities with an image, and statistics cards showing company achievements.",
+  "frontend/src/components/Products.tsx": "Products section with tabbed interface to filter products by category using proper ProductCategory enum values, displaying product cards with images, descriptions, specifications, and applications.",
+  "frontend/src/components/Industries.tsx": "Industries section showcasing the sectors served with image cards and detailed descriptions of how products benefit each industry.",
+  "frontend/src/components/Contact.tsx": "Contact section with a form for inquiries and company contact information card displaying address \"Pupri, Sitamarhi, Bihar, 843314, India\" and phone \"+91 8879802001\" as fallback values when companyInfo is unavailable.",
+  "frontend/src/components/Footer.tsx": "Footer component with Infrapulse logo and branding, company info, quick links, social media icons, and attribution to caffeine.ai.",
+  "frontend/src/hooks/useQueries.ts": "Custom React Query hooks for all backend operations including products, industries, company info, and contact inquiries with proper state management.",
+  "frontend/src/index.css": "Global styles with industrial-themed OKLCH color system featuring steel blue primary colors and safety orange accents for both light and dark modes.",
+  "frontend/tailwind.config.js": "Tailwind configuration extended with industrial design tokens including custom shadows (industrial, industrial-lg) and fade-in animation."
+}

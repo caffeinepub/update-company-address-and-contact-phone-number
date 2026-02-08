@@ -1,0 +1,22 @@
+{
+  "kind": "implementation_plan",
+  "version": "1.0",
+  "title": "Update Contact fallback address and phone",
+  "requirements": [
+    {
+      "id": "REQ-2",
+      "summary": "Update the Contact section to use the new address and phone number as fallback values when companyInfo is unavailable.",
+      "acceptanceCriteria": [
+        "On the Contact page, if `companyInfo?.address` is not available, the displayed address fallback is exactly \"Pupri, Sitamarhi, Bihar, 843314, India\".",
+        "On the Contact page, if `companyInfo?.phone` is not available, the displayed phone fallback is exactly \"+91 8879802001\"."
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/src/components/Contact.tsx",
+          "operation": "modify",
+          "description": "Replace the hardcoded fallback strings for Address and Phone in the Contact Information card so they exactly match the new required values when `companyInfo` is null/undefined or missing those fields. Ensure no changes are made under frontend/src/components/ui and keep all other content (email, business hours, etc.) unchanged."
+        }
+      ]
+    }
+  ]
+}

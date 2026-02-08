@@ -1,0 +1,40 @@
+{
+  "kind": "spec_vs_diff_report",
+  "version": "1.0",
+  "generatedAt": "2026-02-08T06:10:29.411Z",
+  "summary": "REQ-1 appears implemented by updating backend `companyInfo` returned from `getCompanyInfo()` with the new address and phone. REQ-2 appears implemented by updating the Contact UI to use the new address/phone as fallback values when `companyInfo` is unavailable. However, the diff also includes changes/additions not requested, including modifying an explicitly immutable frontend hook and adding project state/migration scaffolding.",
+  "missing_requirements": [],
+  "hallucinated_features": [
+    {
+      "description": "Modified an immutable frontend file (`frontend/src/hooks/useInternetIdentity.ts`) despite the BuildRequest constraint not to modify it.",
+      "reason": "BuildRequest explicitly lists this file as immutable; the diff shows it as a modified file with content changes.",
+      "evidence": [
+        "frontend/src/hooks/useInternetIdentity.ts"
+      ]
+    },
+    {
+      "description": "Added backend upgrade/migration scaffolding (`backend/migration.mo`) and wired it into the actor (`with migration = Migration.run`) without an explicit requirement to do so.",
+      "reason": "BuildRequest only allows adding `backend/migration.mo` if an upgrade/state migration is required; the diff introduces a migration module and actor migration wiring, but the need is not established by the request itself.",
+      "evidence": [
+        "backend/migration.mo",
+        "backend/main.mo"
+      ]
+    },
+    {
+      "description": "Added `project_state.json`, which is not part of the requested address/phone update implementation.",
+      "reason": "No requirement mentions adding project tracking/state files.",
+      "evidence": [
+        "project_state.json"
+      ]
+    }
+  ],
+  "confidence": 0.74,
+  "changed_files": [
+    "backend/main.mo",
+    "backend/migration.mo",
+    "frontend-file-summaries.txt",
+    "frontend/src/components/Contact.tsx",
+    "frontend/src/hooks/useInternetIdentity.ts",
+    "project_state.json"
+  ]
+}

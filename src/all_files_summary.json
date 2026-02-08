@@ -1,0 +1,23 @@
+{
+  "backend/main.mo": "Main backend actor defining product, industry, company info, and inquiry types with CRUD methods and in-memory maps plus blob storage mixin.",
+  "backend/migration.mo": "Migration logic converting old actor state to the new structure with default companyInfo values.",
+  "feature_evidence.json": "Feature evidence report linking fallback contact info feature to affected files and components.",
+  "frontend-file-summaries.txt": "Prewritten summaries describing responsibilities of all frontend components and configs.",
+  "frontend/index.css": "Tailwind CSS base theme variables for light and dark modes with industrial color system.",
+  "frontend/index.html": "Root HTML page loading the React app via main.tsx.",
+  "frontend/src/App.tsx": "Main React app wiring providers and rendering all major site sections.",
+  "frontend/src/components/About.tsx": "About section fetching companyInfo and displaying history, mission, and capabilities with fallbacks.",
+  "frontend/src/components/Contact.tsx": "Contact section providing inquiry form and showing company contact info with fallback address and phone.",
+  "frontend/src/components/Footer.tsx": "Footer component showing company info, social links, and quick navigation with smooth scrolling.",
+  "frontend/src/components/Header.tsx": "Header with logo, desktop and mobile navigation, and scroll-based style changes using smooth section scrolling.",
+  "frontend/src/components/Hero.tsx": "Hero section with background image, marketing text, feature highlights, and buttons for contacting or viewing products.",
+  "frontend/src/components/Industries.tsx": "Industries section fetching industry data via actor or falling back to defaults, displaying cards with images and descriptions.",
+  "frontend/src/components/Products.tsx": "Products section loading product data or defaults, organized into categories with images, specs, and tabbed browsing.",
+  "frontend/src/hooks/useActor.ts": "Hook that creates and manages a backend actor based on Internet Identity and invalidates dependent queries on changes.",
+  "frontend/src/hooks/useInternetIdentity.ts": "Provides a React context and provider for Internet Identity authentication, managing identity state and login flow via Dfinity AuthClient.",
+  "frontend/src/hooks/useQueries.ts": "Defines React Query hooks for fetching products, industries, company info, inquiries, and submitting contact inquiries through an actor API.",
+  "frontend/src/index.css": "Configures Tailwind base styles and custom CSS variables for light and dark themes, including color palettes and utility classes.",
+  "frontend/src/main.tsx": "Bootstraps the React app, wrapping it with QueryClientProvider and InternetIdentityProvider.",
+  "frontend/tailwind.config.js": "Tailwind configuration extending theme colors, animations, shadows, and enabling plugins like typography and container queries.",
+  "project_state.json": "Project metadata describing versions, existing features, and pending requests related to updating company address and phone number."
+}

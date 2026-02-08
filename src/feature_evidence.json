@@ -1,0 +1,24 @@
+{
+  "kind": "feature_evidence_report",
+  "features": [
+    {
+      "featureId": "feature-update-the-contact-section-ui-to-display-the-new-address-and-phone-number-as-the-fallback-values-when-companyinfo-is-unavailable-e-g-query-fails-or-companyinfo-is-null",
+      "featureTitle": "Update the Contact section UI to display the new address and phone number as the fallback values when `companyInfo` is unavailable (e.g., query fails or `companyInfo` is null).",
+      "files": [
+        "frontend/src/components/Contact.tsx"
+      ],
+      "components": [
+        "blob-storage@4.0.0",
+        "core-infrastructure@1.0.2",
+        "shadcn-ui@1.0.0",
+        "build-template-react@1.0.0",
+        "initial-app@1.0.0",
+        "github-export-icp-cli@1.0.0"
+      ],
+      "testIds": [
+        "REQ-2"
+      ],
+      "confidence": "high"
+    }
+  ]
+}
