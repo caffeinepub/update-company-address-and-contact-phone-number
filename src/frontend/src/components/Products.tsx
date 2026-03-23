@@ -1,92 +1,108 @@
-import { useQuery } from '@tanstack/react-query';
-import { useActor } from '@/hooks/useActor';
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
-import { Badge } from '@/components/ui/badge';
-import { Skeleton } from '@/components/ui/skeleton';
-import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
-import { CheckCircle2 } from 'lucide-react';
-import { Product, ProductCategory } from '@/backend';
+import { type Product, ProductCategory } from "@/backend";
+import { Badge } from "@/components/ui/badge";
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardHeader,
+  CardTitle,
+} from "@/components/ui/card";
+import { Skeleton } from "@/components/ui/skeleton";
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import { useActor } from "@/hooks/useActor";
+import { useQuery } from "@tanstack/react-query";
+import { CheckCircle2 } from "lucide-react";
 
 const Products = () => {
   const { actor, isFetching: isActorFetching } = useActor();
 
   const { data: products, isLoading } = useQuery<Product[]>({
-    queryKey: ['products'],
+    queryKey: ["products"],
     queryFn: async () => {
       if (!actor) return [];
       try {
         return await actor.getProducts();
       } catch (error) {
-        console.error('Error fetching products:', error);
+        console.error("Error fetching products:", error);
         return [];
       }
     },
-    enabled: !!actor && !isActorFetching
+    enabled: !!actor && !isActorFetching,
   });
 
   const getCategoryLabel = (category: ProductCategory): string => {
     switch (category) {
       case ProductCategory.eotCranes:
-        return 'EOT Cranes';
+        return "EOT Cranes";
       case ProductCategory.billetShearingMachines:
-        return 'Billet Shearing Machines';
+        return "Billet Shearing Machines";
       case ProductCategory.scrapShredders:
-        return 'Scrap Shredders';
+        return "Scrap Shredders";
       default:
-        return 'All Products';
+        return "All Products";
     }
   };
 
   const getCategoryImage = (category: ProductCategory): string => {
     switch (category) {
       case ProductCategory.eotCranes:
-        return '/assets/generated/eot-crane.dim_800x600.jpg';
+        return "/assets/generated/eot-crane.dim_800x600.jpg";
       case ProductCategory.billetShearingMachines:
-        return '/assets/generated/billet-shearing-machine.dim_800x600.jpg';
+        return "/assets/generated/billet-shearing-machine.dim_800x600.jpg";
       case ProductCategory.scrapShredders:
-        return '/assets/generated/scrap-shredder.dim_800x600.jpg';
+        return "/assets/generated/scrap-shredder.dim_800x600.jpg";
       default:
-        return '/assets/generated/eot-crane.dim_800x600.jpg';
+        return "/assets/generated/eot-crane.dim_800x600.jpg";
     }
   };
 
   const defaultProducts: Product[] = [
     {
-      id: '1',
-      name: 'Electric Overhead Traveling Cranes',
+      id: "1",
+      name: "Electric Overhead Traveling Cranes",
       category: ProductCategory.eotCranes,
-      description: 'Heavy-duty EOT cranes designed for efficient material handling in industrial environments. Built with precision engineering for maximum safety and reliability.',
-      specifications: 'Capacity: 5-500 tons | Span: Up to 35m | Lifting Height: Up to 30m | Speed: Variable',
-      applications: 'Steel plants, warehouses, manufacturing facilities, shipyards, and heavy machinery workshops',
-      images: []
+      description:
+        "Heavy-duty EOT cranes designed for efficient material handling in industrial environments. Built with precision engineering for maximum safety and reliability.",
+      specifications:
+        "Capacity: 5-500 tons | Span: Up to 35m | Lifting Height: Up to 30m | Speed: Variable",
+      applications:
+        "Steel plants, warehouses, manufacturing facilities, shipyards, and heavy machinery workshops",
+      images: [],
     },
     {
-      id: '2',
-      name: 'Hot Billet Shearing Machines',
+      id: "2",
+      name: "Hot Billet Shearing Machines",
       category: ProductCategory.billetShearingMachines,
-      description: 'High-performance shearing machines for cutting hot billets with precision and efficiency. Engineered for continuous operation in demanding steel production environments.',
-      specifications: 'Cutting Force: Up to 2000 tons | Billet Size: 100-300mm | Temperature: Up to 1200°C | Cycle Time: 10-15 seconds',
-      applications: 'Steel mills, rolling mills, continuous casting plants, and metal forging operations',
-      images: []
+      description:
+        "High-performance shearing machines for cutting hot billets with precision and efficiency. Engineered for continuous operation in demanding steel production environments.",
+      specifications:
+        "Cutting Force: Up to 2000 tons | Billet Size: 100-300mm | Temperature: Up to 1200°C | Cycle Time: 10-15 seconds",
+      applications:
+        "Steel mills, rolling mills, continuous casting plants, and metal forging operations",
+      images: [],
     },
     {
-      id: '3',
-      name: 'Industrial Scrap Shredders',
+      id: "3",
+      name: "Industrial Scrap Shredders",
       category: ProductCategory.scrapShredders,
-      description: 'Robust scrap shredding systems for efficient metal recycling. Designed to handle various types of scrap metal with high throughput and minimal maintenance.',
-      specifications: 'Power: 200-1000 HP | Capacity: 10-100 tons/hour | Rotor Speed: 60-120 RPM | Feed Opening: Customizable',
-      applications: 'Recycling facilities, scrap yards, automobile recycling, metal recovery plants, and waste management',
-      images: []
-    }
+      description:
+        "Robust scrap shredding systems for efficient metal recycling. Designed to handle various types of scrap metal with high throughput and minimal maintenance.",
+      specifications:
+        "Power: 200-1000 HP | Capacity: 10-100 tons/hour | Rotor Speed: 60-120 RPM | Feed Opening: Customizable",
+      applications:
+        "Recycling facilities, scrap yards, automobile recycling, metal recovery plants, and waste management",
+      images: [],
+    },
   ];
 
-  const displayProducts = products && products.length > 0 ? products : defaultProducts;
+  const displayProducts =
+    products && products.length > 0 ? products : defaultProducts;
 
-  const categories: (ProductCategory | 'all')[] = [
-    'all',
+  const categories: (ProductCategory | "all")[] = [
+    "all",
     ProductCategory.eotCranes,
     ProductCategory.billetShearingMachines,
-    ProductCategory.scrapShredders
+    ProductCategory.scrapShredders,
   ];
 
   if (isLoading) {
@@ -113,7 +129,8 @@ const Products = () => {
             Our Products
           </h2>
           <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
-            Industry-leading machinery engineered for performance, durability, and safety
+            Industry-leading machinery engineered for performance, durability,
+            and safety
           </p>
         </div>
 
@@ -121,7 +138,9 @@ const Products = () => {
           <TabsList className="grid w-full max-w-2xl mx-auto grid-cols-4 mb-12">
             {categories.map((cat) => (
               <TabsTrigger key={cat} value={cat}>
-                {cat === 'all' ? 'All' : getCategoryLabel(cat as ProductCategory)}
+                {cat === "all"
+                  ? "All"
+                  : getCategoryLabel(cat as ProductCategory)}
               </TabsTrigger>
             ))}
           </TabsList>
@@ -130,9 +149,15 @@ const Products = () => {
             <TabsContent key={category} value={category} className="mt-0">
               <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
                 {displayProducts
-                  .filter((product) => category === 'all' || product.category === category)
+                  .filter(
+                    (product) =>
+                      category === "all" || product.category === category,
+                  )
                   .map((product) => (
-                    <Card key={product.id} className="overflow-hidden hover:shadow-industrial-lg transition-shadow duration-300">
+                    <Card
+                      key={product.id}
+                      className="overflow-hidden hover:shadow-industrial-lg transition-shadow duration-300"
+                    >
                       <div className="relative h-64 overflow-hidden">
                         <img
                           src={getCategoryImage(product.category)}
@@ -144,7 +169,9 @@ const Products = () => {
                         </Badge>
                       </div>
                       <CardHeader>
-                        <CardTitle className="text-xl">{product.name}</CardTitle>
+                        <CardTitle className="text-xl">
+                          {product.name}
+                        </CardTitle>
                         <CardDescription className="text-base">
                           {product.description}
                         </CardDescription>

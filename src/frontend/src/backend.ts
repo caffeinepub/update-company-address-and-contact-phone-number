@@ -100,12 +100,12 @@ export interface _CaffeineStorageRefillInformation {
 export interface CompanyInfo {
     missionStatement: string;
     businessHours: string;
+    phoneNumbers: Array<string>;
     capabilities: string;
     name: string;
     history: string;
     email: string;
     address: string;
-    phone: string;
 }
 export interface _CaffeineStorageCreateCertificateResult {
     method: string;

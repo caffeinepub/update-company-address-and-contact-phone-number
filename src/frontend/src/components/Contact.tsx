@@ -1,67 +1,74 @@
-import { useState } from 'react';
-import { useMutation, useQuery } from '@tanstack/react-query';
-import { useActor } from '@/hooks/useActor';
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
-import { Input } from '@/components/ui/input';
-import { Textarea } from '@/components/ui/textarea';
-import { Button } from '@/components/ui/button';
-import { Label } from '@/components/ui/label';
-import { toast } from 'sonner';
-import { Mail, Phone, MapPin, Clock, Send } from 'lucide-react';
-import type { ContactInquiry } from '@/backend';
+import type { ContactInquiry } from "@/backend";
+import { Button } from "@/components/ui/button";
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardHeader,
+  CardTitle,
+} from "@/components/ui/card";
+import { Input } from "@/components/ui/input";
+import { Label } from "@/components/ui/label";
+import { Textarea } from "@/components/ui/textarea";
+import { useActor } from "@/hooks/useActor";
+import { useMutation, useQuery } from "@tanstack/react-query";
+import { Clock, Mail, MapPin, Phone, Send } from "lucide-react";
+import { useState } from "react";
+import { toast } from "sonner";
 
 const Contact = () => {
   const { actor } = useActor();
   const [formData, setFormData] = useState({
-    name: '',
-    email: '',
-    phone: '',
-    company: '',
-    message: ''
+    name: "",
+    email: "",
+    phone: "",
+    company: "",
+    message: "",
   });
 
   const { data: companyInfo } = useQuery({
-    queryKey: ['companyInfo'],
+    queryKey: ["companyInfo"],
     queryFn: async () => {
       if (!actor) return null;
       try {
         return await actor.getCompanyInfo();
-      } catch (error) {
+      } catch (_error) {
         return null;
       }
     },
-    enabled: !!actor
+    enabled: !!actor,
   });
 
   const submitInquiry = useMutation({
     mutationFn: async (inquiry: ContactInquiry) => {
-      if (!actor) throw new Error('Actor not initialized');
+      if (!actor) throw new Error("Actor not initialized");
       await actor.submitContactInquiry(inquiry);
     },
     onSuccess: () => {
-      toast.success('Message sent successfully!', {
-        description: 'We will get back to you as soon as possible.'
+      toast.success("Message sent successfully!", {
+        description: "We will get back to you as soon as possible.",
       });
       setFormData({
-        name: '',
-        email: '',
-        phone: '',
-        company: '',
-        message: ''
+        name: "",
+        email: "",
+        phone: "",
+        company: "",
+        message: "",
       });
     },
     onError: (error) => {
-      toast.error('Failed to send message', {
-        description: error instanceof Error ? error.message : 'Please try again later.'
+      toast.error("Failed to send message", {
+        description:
+          error instanceof Error ? error.message : "Please try again later.",
       });
-    }
+    },
   });
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    
+
     if (!formData.name || !formData.email || !formData.message) {
-      toast.error('Please fill in all required fields');
+      toast.error("Please fill in all required fields");
       return;
     }
 
@@ -72,18 +79,23 @@ const Contact = () => {
       phone: formData.phone,
       company: formData.company,
       message: formData.message,
-      timestamp: BigInt(Date.now() * 1000000)
+      timestamp: BigInt(Date.now() * 1000000),
     };
 
     submitInquiry.mutate(inquiry);
   };
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+  const handleChange = (
+    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>,
+  ) => {
     setFormData({
       ...formData,
-      [e.target.name]: e.target.value
+      [e.target.name]: e.target.value,
     });
   };
+
+  const fallbackPhoneNumbers = ["8879802001", "8271687996"];
+  const phoneNumbers = companyInfo?.phoneNumbers || fallbackPhoneNumbers;
 
   return (
     <section id="contact" className="py-20">
@@ -93,12 +105,12 @@ const Contact = () => {
             Contact Infrapulse
           </h2>
           <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
-            Get in touch with our team for inquiries, quotes, or technical support
+            Get in touch with our team for inquiries, quotes, or technical
+            support
           </p>
         </div>
 
         <div className="grid lg:grid-cols-3 gap-8">
-          {/* Contact Information */}
           <div className="lg:col-span-1 space-y-6">
             <Card>
               <CardHeader>
@@ -113,7 +125,8 @@ const Contact = () => {
                   <div>
                     <p className="font-medium text-sm mb-1">Address</p>
                     <p className="text-sm text-muted-foreground">
-                      {companyInfo?.address || 'Pupri, Sitamarhi, Bihar, 843314, India'}
+                      {companyInfo?.address ||
+                        "Pupri, Sitamarhi, Bihar, 843314, India"}
                     </p>
                   </div>
                 </div>
@@ -122,9 +135,11 @@ const Contact = () => {
                   <Phone className="h-5 w-5 text-primary mt-1 flex-shrink-0" />
                   <div>
                     <p className="font-medium text-sm mb-1">Phone</p>
-                    <p className="text-sm text-muted-foreground">
-                      {companyInfo?.phone || '+91 8879802001'}
-                    </p>
+                    <div className="text-sm text-muted-foreground space-y-1">
+                      {phoneNumbers.map((phone) => (
+                        <p key={phone}>{phone}</p>
+                      ))}
+                    </div>
                   </div>
                 </div>
 
@@ -133,7 +148,7 @@ const Contact = () => {
                   <div>
                     <p className="font-medium text-sm mb-1">Email</p>
                     <p className="text-sm text-muted-foreground">
-                      {companyInfo?.email || 'info@infrapulse.com'}
+                      {companyInfo?.email || "rajiivjayswal@gmail.com"}
                     </p>
                   </div>
                 </div>
@@ -143,7 +158,8 @@ const Contact = () => {
                   <div>
                     <p className="font-medium text-sm mb-1">Business Hours</p>
                     <p className="text-sm text-muted-foreground">
-                      {companyInfo?.businessHours || 'Monday - Friday: 8:00 AM - 6:00 PM'}
+                      {companyInfo?.businessHours ||
+                        "Monday - Friday: 8:00 AM - 6:00 PM"}
                     </p>
                   </div>
                 </div>
@@ -151,7 +167,6 @@ const Contact = () => {
             </Card>
           </div>
 
-          {/* Contact Form */}
           <div className="lg:col-span-2">
             <Card>
               <CardHeader>
@@ -240,7 +255,7 @@ const Contact = () => {
                     disabled={submitInquiry.isPending}
                   >
                     {submitInquiry.isPending ? (
-                      'Sending...'
+                      "Sending..."
                     ) : (
                       <>
                         Send Message

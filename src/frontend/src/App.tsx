@@ -1,15 +1,12 @@
-import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
-import { ThemeProvider } from 'next-themes';
-import { Toaster } from '@/components/ui/sonner';
-import Header from './components/Header';
-import Hero from './components/Hero';
-import About from './components/About';
-import Products from './components/Products';
-import Industries from './components/Industries';
-import Contact from './components/Contact';
-import Footer from './components/Footer';
-
-const queryClient = new QueryClient();
+import { Toaster } from "@/components/ui/sonner";
+import { ThemeProvider } from "next-themes";
+import About from "./components/About";
+import Contact from "./components/Contact";
+import Footer from "./components/Footer";
+import Header from "./components/Header";
+import Hero from "./components/Hero";
+import Industries from "./components/Industries";
+import Products from "./components/Products";
 
 function App() {
   return (

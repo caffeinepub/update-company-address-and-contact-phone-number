@@ -52,12 +52,12 @@ export const ContactInquiry = IDL.Record({
 export const CompanyInfo = IDL.Record({
   'missionStatement' : IDL.Text,
   'businessHours' : IDL.Text,
+  'phoneNumbers' : IDL.Vec(IDL.Text),
   'capabilities' : IDL.Text,
   'name' : IDL.Text,
   'history' : IDL.Text,
   'email' : IDL.Text,
   'address' : IDL.Text,
-  'phone' : IDL.Text,
 });
 
 export const idlService = IDL.Service({
@@ -145,12 +145,12 @@ export const idlFactory = ({ IDL }) => {
   const CompanyInfo = IDL.Record({
     'missionStatement' : IDL.Text,
     'businessHours' : IDL.Text,
+    'phoneNumbers' : IDL.Vec(IDL.Text),
     'capabilities' : IDL.Text,
     'name' : IDL.Text,
     'history' : IDL.Text,
     'email' : IDL.Text,
     'address' : IDL.Text,
-    'phone' : IDL.Text,
   });
   
   return IDL.Service({

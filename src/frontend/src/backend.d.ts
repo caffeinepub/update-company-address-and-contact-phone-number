@@ -18,12 +18,12 @@ export type Time = bigint;
 export interface CompanyInfo {
     missionStatement: string;
     businessHours: string;
+    phoneNumbers: Array<string>;
     capabilities: string;
     name: string;
     history: string;
     email: string;
     address: string;
-    phone: string;
 }
 export interface ContactInquiry {
     id: string;

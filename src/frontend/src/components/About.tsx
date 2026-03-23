@@ -1,24 +1,24 @@
-import { useQuery } from '@tanstack/react-query';
-import { useActor } from '@/hooks/useActor';
-import { Building2, Target, Award } from 'lucide-react';
-import { Card, CardContent } from '@/components/ui/card';
-import { Skeleton } from '@/components/ui/skeleton';
+import { Card, CardContent } from "@/components/ui/card";
+import { Skeleton } from "@/components/ui/skeleton";
+import { useActor } from "@/hooks/useActor";
+import { useQuery } from "@tanstack/react-query";
+import { Award, Building2, Target } from "lucide-react";
 
 const About = () => {
   const { actor, isFetching: isActorFetching } = useActor();
 
   const { data: companyInfo, isLoading } = useQuery({
-    queryKey: ['companyInfo'],
+    queryKey: ["companyInfo"],
     queryFn: async () => {
       if (!actor) return null;
       try {
         return await actor.getCompanyInfo();
       } catch (error) {
-        console.error('Error fetching company info:', error);
+        console.error("Error fetching company info:", error);
         return null;
       }
     },
-    enabled: !!actor && !isActorFetching
+    enabled: !!actor && !isActorFetching,
   });
 
   if (isLoading) {
@@ -44,7 +44,8 @@ const About = () => {
             About Infrapulse
           </h2>
           <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
-            Decades of experience in manufacturing world-class industrial equipment
+            Decades of experience in manufacturing world-class industrial
+            equipment
           </p>
         </div>
 
@@ -66,8 +67,8 @@ const About = () => {
                 Our History
               </h3>
               <p className="text-muted-foreground leading-relaxed">
-                {companyInfo?.history || 
-                  'With decades of experience in heavy industrial manufacturing, Infrapulse has established itself as a trusted partner for steel plants, foundries, and recycling facilities worldwide. Our commitment to quality and innovation has made us a leader in the industry.'}
+                {companyInfo?.history ||
+                  "With decades of experience in heavy industrial manufacturing, Infrapulse has established itself as a trusted partner for steel plants, foundries, and recycling facilities worldwide. Our commitment to quality and innovation has made us a leader in the industry."}
               </p>
             </div>
 
@@ -77,8 +78,8 @@ const About = () => {
                 Our Mission
               </h3>
               <p className="text-muted-foreground leading-relaxed">
-                {companyInfo?.missionStatement || 
-                  'To deliver superior industrial machinery that enhances operational efficiency, safety, and productivity for our clients. We are dedicated to engineering excellence and customer satisfaction in every project we undertake.'}
+                {companyInfo?.missionStatement ||
+                  "To deliver superior industrial machinery that enhances operational efficiency, safety, and productivity for our clients. We are dedicated to engineering excellence and customer satisfaction in every project we undertake."}
               </p>
             </div>
 
@@ -88,8 +89,8 @@ const About = () => {
                 Our Capabilities
               </h3>
               <p className="text-muted-foreground leading-relaxed">
-                {companyInfo?.capabilities || 
-                  'Our state-of-the-art manufacturing facilities are equipped with advanced technology and operated by skilled engineers and technicians. We offer custom design, precision manufacturing, installation, and comprehensive after-sales support.'}
+                {companyInfo?.capabilities ||
+                  "Our state-of-the-art manufacturing facilities are equipped with advanced technology and operated by skilled engineers and technicians. We offer custom design, precision manufacturing, installation, and comprehensive after-sales support."}
               </p>
             </div>
           </div>
@@ -100,25 +101,33 @@ const About = () => {
           <Card className="border-2">
             <CardContent className="pt-6 text-center">
               <div className="text-4xl font-bold text-primary mb-2">25+</div>
-              <div className="text-sm text-muted-foreground">Years Experience</div>
+              <div className="text-sm text-muted-foreground">
+                Years Experience
+              </div>
             </CardContent>
           </Card>
           <Card className="border-2">
             <CardContent className="pt-6 text-center">
-              <div className="text-4xl font-bold text-primary mb-2">500+</div>
-              <div className="text-sm text-muted-foreground">Projects Completed</div>
+              <div className="text-4xl font-bold text-primary mb-2">100+</div>
+              <div className="text-sm text-muted-foreground">
+                Projects Completed
+              </div>
             </CardContent>
           </Card>
           <Card className="border-2">
             <CardContent className="pt-6 text-center">
-              <div className="text-4xl font-bold text-primary mb-2">50+</div>
-              <div className="text-sm text-muted-foreground">Countries Served</div>
+              <div className="text-4xl font-bold text-primary mb-2">10+</div>
+              <div className="text-sm text-muted-foreground">
+                Countries Served
+              </div>
             </CardContent>
           </Card>
           <Card className="border-2">
             <CardContent className="pt-6 text-center">
               <div className="text-4xl font-bold text-primary mb-2">100%</div>
-              <div className="text-sm text-muted-foreground">Quality Assured</div>
+              <div className="text-sm text-muted-foreground">
+                Quality Assured
+              </div>
             </CardContent>
           </Card>
         </div>

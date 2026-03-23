@@ -2,14 +2,14 @@ import Map "mo:core/Map";
 import Array "mo:core/Array";
 import Order "mo:core/Order";
 import Text "mo:core/Text";
-import Runtime "mo:core/Runtime";
 import Int "mo:core/Int";
 import Time "mo:core/Time";
+import Runtime "mo:core/Runtime";
 import MixinStorage "blob-storage/Mixin";
 import Storage "blob-storage/Storage";
-import Migration "migration";
 
-(with migration = Migration.run)
+
+
 actor {
   include MixinStorage();
 
@@ -38,7 +38,7 @@ actor {
   public type CompanyInfo = {
     name : Text;
     address : Text;
-    phone : Text;
+    phoneNumbers : [Text];
     email : Text;
     businessHours : Text;
     missionStatement : Text;
@@ -67,15 +67,15 @@ actor {
   let industriesMap = Map.empty<Text, Industry>();
   let inquiriesMap = Map.empty<Text, ContactInquiry>();
 
-  // Company info is now a record for infrequent updates, like address/phone changes, fully controlled by the backend.
+  // Updated companyInfo with multiple phone numbers and new email
   let companyInfo : CompanyInfo = {
-    name = "MiM Structura";
-    phone = "+91 8879802001";
+    name = "Infrapulse";
+    phoneNumbers = ["8879802001", "8271687996"];
     address = "Pupri, Sitamarhi, Bihar, 843314, India";
-    email = "mimstructura@gmail.com";
+    email = "rajiivjayswal@gmail.com";
     businessHours = "Mon-Fri 09:00-18:00";
     missionStatement = "To deliver high-quality engineering solutions that empower industries to achieve peak performance and innovation.";
-    history = "Founded in 2007, MiM Structura has grown from a small startup to a leading provider of engineering solutions. With a commitment to innovation and customer satisfaction, we have consistently expanded our capabilities and market reach.";
+    history = "Founded in 2007, Infrapulse has grown from a small startup to a leading provider of engineering solutions. With a commitment to innovation and customer satisfaction, we have consistently expanded our capabilities and market reach.";
     capabilities = "- Design and manufacturing of industrial machinery\n- Custom engineering solutions\n- Project management and consulting\n- Maintenance and support services";
   };
 

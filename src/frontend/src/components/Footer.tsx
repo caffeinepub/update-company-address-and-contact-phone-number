@@ -1,5 +1,5 @@
-import { Heart } from 'lucide-react';
-import { SiFacebook, SiX, SiLinkedin, SiInstagram } from 'react-icons/si';
+import { Heart } from "lucide-react";
+import { SiFacebook, SiInstagram, SiLinkedin, SiX } from "react-icons/si";
 
 const Footer = () => {
   const currentYear = new Date().getFullYear();
@@ -12,7 +12,7 @@ const Footer = () => {
       const offsetPosition = elementPosition + window.pageYOffset - offset;
       window.scrollTo({
         top: offsetPosition,
-        behavior: 'smooth'
+        behavior: "smooth",
       });
     }
   };
@@ -39,33 +39,42 @@ const Footer = () => {
               </div>
             </div>
             <p className="text-sm text-muted-foreground mb-4 max-w-md">
-              Leading manufacturer of industrial machinery including EOT cranes, 
-              hot billet shearing machines, and scrap shredders for global industries.
+              Leading manufacturer of industrial machinery including EOT cranes,
+              hot billet shearing machines, and scrap shredders for global
+              industries.
             </p>
             <div className="flex gap-4">
               <a
-                href="#"
+                href="https://facebook.com"
+                target="_blank"
+                rel="noopener noreferrer"
                 className="text-muted-foreground hover:text-primary transition-colors"
                 aria-label="Facebook"
               >
                 <SiFacebook className="h-5 w-5" />
               </a>
               <a
-                href="#"
+                href="https://x.com"
+                target="_blank"
+                rel="noopener noreferrer"
                 className="text-muted-foreground hover:text-primary transition-colors"
                 aria-label="X (Twitter)"
               >
                 <SiX className="h-5 w-5" />
               </a>
               <a
-                href="#"
+                href="https://linkedin.com"
+                target="_blank"
+                rel="noopener noreferrer"
                 className="text-muted-foreground hover:text-primary transition-colors"
                 aria-label="LinkedIn"
               >
                 <SiLinkedin className="h-5 w-5" />
               </a>
               <a
-                href="#"
+                href="https://instagram.com"
+                target="_blank"
+                rel="noopener noreferrer"
                 className="text-muted-foreground hover:text-primary transition-colors"
                 aria-label="Instagram"
               >
@@ -80,7 +89,8 @@ const Footer = () => {
             <ul className="space-y-2">
               <li>
                 <button
-                  onClick={() => scrollToSection('home')}
+                  type="button"
+                  onClick={() => scrollToSection("home")}
                   className="text-sm text-muted-foreground hover:text-primary transition-colors"
                 >
                   Home
@@ -88,7 +98,8 @@ const Footer = () => {
               </li>
               <li>
                 <button
-                  onClick={() => scrollToSection('about')}
+                  type="button"
+                  onClick={() => scrollToSection("about")}
                   className="text-sm text-muted-foreground hover:text-primary transition-colors"
                 >
                   About Us
@@ -96,7 +107,8 @@ const Footer = () => {
               </li>
               <li>
                 <button
-                  onClick={() => scrollToSection('products')}
+                  type="button"
+                  onClick={() => scrollToSection("products")}
                   className="text-sm text-muted-foreground hover:text-primary transition-colors"
                 >
                   Products
@@ -104,7 +116,8 @@ const Footer = () => {
               </li>
               <li>
                 <button
-                  onClick={() => scrollToSection('industries')}
+                  type="button"
+                  onClick={() => scrollToSection("industries")}
                   className="text-sm text-muted-foreground hover:text-primary transition-colors"
                 >
                   Industries
@@ -118,9 +131,13 @@ const Footer = () => {
             <h3 className="font-semibold text-foreground mb-4">Our Products</h3>
             <ul className="space-y-2">
               <li className="text-sm text-muted-foreground">EOT Cranes</li>
-              <li className="text-sm text-muted-foreground">Billet Shearing Machines</li>
+              <li className="text-sm text-muted-foreground">
+                Billet Shearing Machines
+              </li>
               <li className="text-sm text-muted-foreground">Scrap Shredders</li>
-              <li className="text-sm text-muted-foreground">Custom Solutions</li>
+              <li className="text-sm text-muted-foreground">
+                Custom Solutions
+              </li>
             </ul>
           </div>
         </div>
@@ -129,9 +146,9 @@ const Footer = () => {
         <div className="pt-8 border-t">
           <div className="flex flex-col md:flex-row justify-between items-center gap-4">
             <p className="text-sm text-muted-foreground text-center md:text-left">
-              © {currentYear}. Built with{' '}
-              <Heart className="inline h-4 w-4 text-destructive fill-destructive" />{' '}
-              using{' '}
+              © {currentYear}. Built with{" "}
+              <Heart className="inline h-4 w-4 text-destructive fill-destructive" />{" "}
+              using{" "}
               <a
                 href="https://caffeine.ai"
                 target="_blank"
@@ -142,12 +159,12 @@ const Footer = () => {
               </a>
             </p>
             <div className="flex gap-6">
-              <a href="#" className="text-sm text-muted-foreground hover:text-primary transition-colors">
+              <span className="text-sm text-muted-foreground">
                 Privacy Policy
-              </a>
-              <a href="#" className="text-sm text-muted-foreground hover:text-primary transition-colors">
+              </span>
+              <span className="text-sm text-muted-foreground">
                 Terms of Service
-              </a>
+              </span>
             </div>
           </div>
         </div>

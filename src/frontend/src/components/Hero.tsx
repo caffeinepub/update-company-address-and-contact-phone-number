@@ -1,22 +1,25 @@
-import { ArrowRight, Factory, Wrench, Shield } from 'lucide-react';
-import { Button } from '@/components/ui/button';
+import { Button } from "@/components/ui/button";
+import { ArrowRight, Factory, Shield, Wrench } from "lucide-react";
 
 const Hero = () => {
   const scrollToContact = () => {
-    const element = document.getElementById('contact');
+    const element = document.getElementById("contact");
     if (element) {
       const offset = 80;
       const elementPosition = element.getBoundingClientRect().top;
       const offsetPosition = elementPosition + window.pageYOffset - offset;
       window.scrollTo({
         top: offsetPosition,
-        behavior: 'smooth'
+        behavior: "smooth",
       });
     }
   };
 
   return (
-    <section id="home" className="relative min-h-screen flex items-center pt-20">
+    <section
+      id="home"
+      className="relative min-h-screen flex items-center pt-20"
+    >
       {/* Background Image with Overlay */}
       <div className="absolute inset-0 z-0">
         <img
@@ -35,15 +38,16 @@ const Hero = () => {
               Leading Industrial Equipment Manufacturer
             </span>
           </div>
-          
+
           <h1 className="text-5xl md:text-6xl lg:text-7xl font-bold mb-6 text-foreground leading-tight">
-            Infrapulse — Engineering the{' '}
+            Infrapulse — Engineering the{" "}
             <span className="text-primary">Future of Industrial Solutions</span>
           </h1>
-          
+
           <p className="text-xl md:text-2xl text-muted-foreground mb-8 leading-relaxed">
-            Specializing in EOT cranes, hot billet shearing machines, and scrap shredders 
-            for steel plants, foundries, and recycling facilities worldwide.
+            Specializing in EOT cranes, hot billet shearing machines, and scrap
+            shredders for steel plants, foundries, and recycling facilities
+            worldwide.
           </p>
 
           <div className="flex flex-col sm:flex-row gap-4 mb-12">
@@ -59,9 +63,9 @@ const Hero = () => {
               size="lg"
               variant="outline"
               onClick={() => {
-                const element = document.getElementById('products');
+                const element = document.getElementById("products");
                 if (element) {
-                  element.scrollIntoView({ behavior: 'smooth' });
+                  element.scrollIntoView({ behavior: "smooth" });
                 }
               }}
               className="text-lg px-8 py-6"
